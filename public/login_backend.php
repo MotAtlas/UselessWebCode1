@@ -11,7 +11,6 @@ if ( ! empty( $_POST ) ) {
         $result = $stmt->get_result();
         $user = $result->fetch_object();
 
-        // Verify user password and set $_SESSION
         if ($_POST['password'] == $user->password  ) {
             $_SESSION['user'] = $user->username;
             header("location: index.php?msg=success");
