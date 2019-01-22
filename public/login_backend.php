@@ -13,7 +13,7 @@ if ( ! empty( $_POST ) ) {
 
         // Verify user password and set $_SESSION
         if ($_POST['password'] == $user->password  ) {
-            $_SESSION['user_id'] = $user->ID;
+            $_SESSION['user'] = $user->username;
             header("location: index.php?msg=success");
             die();
         }
