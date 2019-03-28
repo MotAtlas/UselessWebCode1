@@ -13,7 +13,7 @@ if ( ! empty( $_POST ) ) {
 
             if(mysqli_num_rows($result) == 0){
                 $stmt = $con->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-                $stmt->bind_param('ss', $_POST['username'],$_POST['password']);
+                $stmt->bind_param('ss', $_POST['username'],password_hash ( $_POST['password'] , PASSWORD_DEFAULT));
                 $stmt->execute();
                 header("location: login.php?error_msg= ".urlencode("success, now login"));
                 die();
